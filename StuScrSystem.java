@@ -7,6 +7,8 @@ public class StuScrSystem {
 
     static String[] students = {"zhang","wang","li","zhao","liu","song"};
     static String[] courses = {"C","Java","mySQL","Linux","HTML"};
+    static double[] stuScoreAve = new double[students.length];
+    static double[] courScoreAve = new double[courses.length];
     static double[][] score = new double[STUDENT_NUM][COURSE_NUM];
     
 
@@ -92,7 +94,7 @@ public class StuScrSystem {
     }
 
     public static void avg(String[] student, String[] course, double[][] score, String parameter) {
-        int stu_index = -1, cour_index = -1;
+        int stu_index = -1, cour_index = -1, index = -1;
         double sum=0,avgS=0;
         for (int i = 0; i < students.length; i++) {
             if (students[i].equalsIgnoreCase(parameter)) {
@@ -106,6 +108,12 @@ public class StuScrSystem {
                 }
             }
         }
+        if (stu_index == -1 & cour_index == -1) {
+            if (parameter.equalsIgnoreCase("all")) {
+                index = 1;
+            }
+
+        }
         if (stu_index != -1 && cour_index == -1) {
             for (int a=0;a<courses.length;a++) {
                 sum += score[stu_index][a];
@@ -118,8 +126,40 @@ public class StuScrSystem {
             }
             avgS = sum / students.length;
             System.out.println(parameter + "的平均成绩是" + avgS);
+        } else if (index != -1 && stu_index == -1 && cour_index == -1) {
+            for (int c=0;c<student.length;c++) {
+                for (int d=0;d<course.length;d++) {
+                    sum += score[c][d];
+                }
+                stuScoreAve[c] = sum / course.length;
+                sum = 0;
+            }
+            for (int e=0;e<course.length;e++) {
+                for (int f=0;f<student.length;f++) {
+                    sum += score[f][e];
+                }
+                courScoreAve[e] = sum / student.length;
+                sum = 0;
+            }
+            System.out.print("\t");
+            for (int g=0;g<course.length;g++) {
+                System.out.printf("%s\t",course[g]);
+            }
+            System.out.println("");
+            for (int h=0;h<student.length;h++) {
+                System.out.printf("%s\t",student[h]);
+                for (int i=0;i<course.length;i++) {
+                    System.out.printf("%.2f\t",score[h][i]);
+                }
+                System.out.printf("%.2f\n",stuScoreAve[h]);
+            }
+            System.out.print("\t");
+            for (int j=0;j<course.length;j++) {
+                System.out.printf("%.2f\t",courScoreAve[j]);
+            }
+            System.out.println("");
         } else {
-            System.out.println("你输入的既不是学生名也不是课程名");
+             System.out.println("你输入的既不是学生名也不是课程名");
         }
     }
 
