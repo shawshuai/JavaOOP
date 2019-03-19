@@ -15,7 +15,7 @@ public class StuScrSystem {
         run(students, courses, score);
     }
 
-    // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ñ§ï¿½ï¿½ï¿½Ä³É¼ï¿½
+    //³õÊ¼»¯²¢ÏÔÊ¾Ñ§ÉúµÄ³É¼¨
     public static void InitScore() {
         for (int i = 0; i < students.length; i++) {
             for (int j = 0; j < courses.length; j++) {
@@ -39,7 +39,7 @@ public class StuScrSystem {
     public static void run(String[] students, String[] courses, double[][] score) {
         Scanner scn = new Scanner(System.in);
         while (true) {
-            System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î£º");
+            System.out.print("ÇëÊäÈëÃüÁî:");
             String command = scn.next();
 
             if (command.equalsIgnoreCase("avg")) {
@@ -60,7 +60,7 @@ public class StuScrSystem {
                 getMax(students, courses, score, parameter);
             }
             if (command.equalsIgnoreCase("exit")) {
-                System.out.println("ï¿½Ë³ï¿½ï¿½ï¿½Ñ¯ÏµÍ³ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½");
+                System.out.println("ÍË³ö²éÑ¯ÏµÍ³¡£¸ÐÐ»ÄúµÄÊ¹ÓÃ£¡");
                 System.exit(0);
             }
         }
@@ -80,13 +80,13 @@ public class StuScrSystem {
                     j_index = j;
                 }
         } else {
-            System.out.println("Ã»ï¿½ï¿½" + condition1 + "ï¿½ï¿½ï¿½ï¿½ï¿½");
+            System.out.println("Ã»ÓÐ" + condition1 + "Õâ¸öÈË");
             return;
         }
         if (j_index != -1) {
-            System.out.println(condition1 + "ï¿½ï¿½" + condition2 + "ï¿½Ä³É¼ï¿½ï¿½ï¿½" + score[i_index][j_index]);
+            System.out.println(condition1 + "µÄ" + condition2 + "¿Î³Ì³É¼¨ÊÇ" + score[i_index][j_index]);
         } else {
-            System.out.println(condition1 + "Ã»ï¿½ï¿½" + condition2 + "ï¿½ï¿½ï¿½Å¿Î³ï¿½");
+            System.out.println(condition1 + "Ã»ÓÐ" + condition2 + "ÕâÃÅ¿Î³Ì");
             return;
         }
     }
@@ -111,22 +111,24 @@ public class StuScrSystem {
                 sum += score[stu_index][a];
             }
             avgS = sum / courses.length;
-            System.out.println(parameter + "ï¿½ï¿½Æ½ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½" + avgS);
+            System.out.println(parameter + "µÄÆ½¾ù³É¼¨ÊÇ" + avgS);
         } else if (cour_index != -1 && stu_index == -1) {
             for (int b=0;b<students.length;b++ ) {
                 sum += score[b][cour_index];
             }
             avgS = sum / students.length;
-            System.out.println(parameter + "ï¿½ï¿½Æ½ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½" + avgS);
+            System.out.println(parameter + "µÄÆ½¾ù³É¼¨ÊÇ" + avgS);
         } else {
-            System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼È²ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ç¿Î³ï¿½");
+            System.out.println("ÄãÊäÈëµÄ¼È²»ÊÇÑ§ÉúÃûÒ²²»ÊÇ¿Î³ÌÃû");
         }
     }
 
     public static void sortByScore(String[] student, String[] course, double[][] score, String parameter) {
         int stu_index = -1, cour_index = -1;
         String cour_tem,stu_tem;
-        double score_tem;
+        String[] course_tem = {"C","Java","mySQL","Linux","HTML"};
+        String[] students_tem = {"zhang","wang","li","zhao","liu","song"};
+        double score_tem,maxS;
         int max_index = 0;
         for (int i = 0; i < students.length; i++) {
             if (students[i].equalsIgnoreCase(parameter)) {
@@ -139,6 +141,58 @@ public class StuScrSystem {
                     cour_index = j;
                 }
             }
+        }
+        if (stu_index != -1 && cour_index == -1) {
+            for (int i = 0; i < courses.length; i++) {
+                // ³õÊ¼»¯Î´ÅÅÐòÐòÁÐÖÐ×îÐ¡Êý¾ÝÊý×éÏÂ±ê
+                max_index= i;
+                for (int j = i+1; j < courses.length; j++) {
+                    // ÔÚÎ´ÅÅÐòÔªËØÖÐ¼ÌÐøÑ°ÕÒ×îÐ¡ÔªËØ£¬²¢±£´æÆäÏÂ±ê
+                    if (score[stu_index][j] > score[stu_index][max_index]) {
+                        max_index = j;
+                    }
+                }
+                // ½«Î´ÅÅÐòÁÐÖÐ×îÐ¡ÔªËØ·Åµ½ÒÑÅÅÐòÁÐÄ©Î²
+                if (max_index != i) {
+                    score_tem = score[stu_index][max_index];
+                    score[stu_index][max_index] = score[stu_index][i];
+                    score[stu_index][i] = score_tem;
+                    cour_tem = course_tem[max_index];
+                    course_tem[max_index] = course_tem[i];
+                    course_tem[i] = cour_tem;
+                }
+            }
+            System.out.print("ÅÅÃû\t¿Î³Ì\t³É¼¨\n");
+            for (int x=0;x<courses.length;x++) {
+                System.out.printf("%s\t",x+1);
+                System.out.printf("%s\t",course_tem[x]);
+                System.out.printf("%.2f\n",score[stu_index][x]);
+            }   
+        } else if (cour_index != -1 && stu_index == -1) {
+            for (int i = 0;i < student.length; i++) {
+                max_index = i;
+                for (int j = i+1; j <student.length; j++) {
+                    if (score[j][cour_index] > score[max_index][cour_index] ) {
+                        max_index = j;
+                    }
+                }
+                if (max_index != i) {
+                    score_tem = score[max_index][cour_index];
+                    score[max_index][cour_index] = score[i][cour_index];
+                    score[i][cour_index] = score_tem;
+                    stu_tem = students_tem[max_index];
+                    students_tem[max_index] = students_tem[i];
+                    students_tem[i] = stu_tem;
+                }
+            }
+            System.out.print("ÅÅÃû\tÐÕÃû\t³É¼¨\n");
+            for (int x=0;x<student.length;x++) {
+                System.out.printf("%s\t",x+1);
+                System.out.printf("%s\t",students_tem[x]);
+                System.out.printf("%.2f\n",score[x][cour_index]);
+            }
+        } else {
+            System.out.println("ÄúÊäÈëµÄ¼È²»ÊÇ¿Î³ÌÃû³ÆÒ²²»ÊÇÑ§ÉúÐÕÃû£¡");
         }
     }
 
@@ -165,7 +219,7 @@ public class StuScrSystem {
                     cour_num = i;
                 }
             }
-            System.out.printf("%sï¿½ï¿½%sï¿½Î³Ì·ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½%.2f\n",students[stu_index],courses[cour_num],score[stu_index][cour_num]);
+            System.out.printf("%sÍ¬Ñ§µÄ%s¿Î³ÌÓÐ%.2fµÄ×î¸ß·Ö\n",students[stu_index],courses[cour_num],score[stu_index][cour_num]);
         } else if (cour_index != -1 && stu_index == -1) {
             int j = 0;
             for (j=0;j<students.length;j++) {
@@ -174,9 +228,9 @@ public class StuScrSystem {
                     stu_num = j;
                 }
             }
-            System.out.printf("%sï¿½ï¿½%sï¿½Î³Ì·ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½%.2f\n",students[stu_num],courses[cour_index],score[stu_num][cour_index]);
+            System.out.printf("%sÍ¬Ñ§µÄ%s¿Î³ÌÓÐ%.2fµÄ×î¸ß·Ö\n",students[stu_num],courses[cour_index],score[stu_num][cour_index]);
         } else {
-            System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼È²ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ç¿Î³ï¿½");
+            System.out.println("ÄãÊäÈëµÄ¼È²»ÊÇÑ§ÉúÃûÒ²²»ÊÇ¿Î³ÌÃû");
         }
     }
 }
