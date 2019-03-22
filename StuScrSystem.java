@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class StuScrSystem {
@@ -168,7 +167,7 @@ public class StuScrSystem {
         String cour_tem,stu_tem;
         String[] course_tem = {"C","Java","mySQL","Linux","HTML"};
         String[] students_tem = {"zhang","wang","li","zhao","liu","song"};
-        double score_tem,maxS;
+        double score_tem;
         int max_index = 0;
         for (int i = 0; i < students.length; i++) {
             if (students[i].equalsIgnoreCase(parameter)) {
