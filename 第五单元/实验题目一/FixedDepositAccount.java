@@ -36,6 +36,6 @@ public class FixedDepositAccount extends Account{
     }
 
     public String toString(){
-        return this.getIdCard() +  "璐︽埛 " + this.getBalance() + "鍏冨瓨娆剧殑" + months + "鏈堝瓨娆惧埄鎭細" + this.getInterest() + "(骞村埄鐜囦负" + rate + "%)";
+        return this.getIdCard() +  "账户 " + this.getBalance() + "元存款的" + months + "月存款利息：" + this.getInterest() + "(年利率为" + rate + "%)";
     }
 }

@@ -1,5 +1,5 @@
 public class TestAccount{
-    public static void main(String arg[]) {
+    public static void main(String args[]) {
         double fixed_rate = 3.5;
         double banking_rate = 5.2;
                 

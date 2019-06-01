@@ -36,7 +36,7 @@ public class BankingAccount extends Account{
     }
 
     public String toString(){
-        return this.getIdCard() + "璐︽埛 " + this.getBalance() + "鍏冨瓨娆剧殑" + this.days + "澶╁瓨娆惧埄鎭細" + this.getInterest()+ "(骞村埄鐜囦负" + rate + "%)";
+        return this.getIdCard() + "账户 " + this.getBalance() + "元存款的" + this.days + "天存款利息：" + this.getInterest()+ "(年利率为" + rate + "%)";
     }
 
 }

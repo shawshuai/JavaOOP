@@ -1,0 +1,21 @@
+<html>
+    <title>
+
+    </title>
+    <body>
+        <div id="d1" onmouseover="fun1('d1')" onmouseout="fun2('d1')"></div>
+        <div id="d2" onmouseover="fun1('d2')" onmouseout="fun2('d2')"></div>
+        <div id="d3" onmouseover="fun1('d3')" onmouseout="fun2('d3')"></div>
+        <div id="d4" onmouseover="fun1('d4')" onmouseout="fun2('d4')"></div>
+        <script>
+            function fun1(id){
+                var d = document.getElementById(id);
+                d.style.backgroundColor = "red";
+            }
+            function fun2(){
+                var d = document.getElementById(id);
+                d.style.backgroundColor = "green";
+            }
+        </script>
+    </body>
+</html>
