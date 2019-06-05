@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Pyramid {
+public class E2_16 {
     public static void main(String[] args) {
         System.out.println("请输入要输出的金字塔的数字：");
         Scanner in = new Scanner(System.in);
@@ -8,7 +8,7 @@ public class Pyramid {
         printPyramid(inNum);
 
         System.out.println("请输入要输出的金字塔的字母：");
-        char inChar = in.nextLine().charAt(0);
+        char inChar = in.next().charAt(0);
         printPyramid(inChar);
     }
 
@@ -30,6 +30,7 @@ public class Pyramid {
     }
 
     public static void printPyramid(char ch) {
-        System.out.println(ch);
+        
+        }
     }
 }
