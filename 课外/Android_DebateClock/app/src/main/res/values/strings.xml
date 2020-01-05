@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DebateClock</string>
+    <string name="team_a_tag">Team A</string>
+    <string name="team_b_tag">Team B</string>
+    <string name="team_a_hint">Enter Team A\'s name here</string>
+    <string name="team_b_hint">Enter Team B\'s name here</string>
+    <string name="welcome_message">Welcome to use the DebateClock App.</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+</resources>

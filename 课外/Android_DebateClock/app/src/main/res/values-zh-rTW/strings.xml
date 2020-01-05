@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">雄思博辩</string>
+    <string name="team_a_tag">正方名称</string>
+    <string name="team_b_tag">反方名称</string>
+    <string name="team_a_hint">在此处输入正方名称</string>
+    <string name="team_b_hint">在此处输入反方名称</string>
+    <string name="welcome_message">感谢您使用“辩钟”应用！ 希望“辩钟”应用能够在您辩论赛准备期间起到帮助作用。目前本应用使用的赛制为“武汉晴川学院‘雄思博辩’辩论赛”赛制，稍后将陆续上线自定义赛制功能。请耐心等待。 使用过程中出现任何问题都可以通过下方按钮联系开发者进行反馈。 再次感谢您的使用！</string>
+</resources>

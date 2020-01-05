@@ -4,47 +4,64 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        String input_city;
+        int input_distance;
+        City c = new City();
+        int numOfCity = -1;
         do {
-            City cti = new City();
-            cti.add(in.next().toString());
-        } while (in.next() != "###");
-        Distance[] dis = new Distance[cti.size()];
-        for (int i = 0; i < cti.size(); i++) {
-            for (int j = 0; j < cti.size(); j++) {
-                dis[i].add(in.nextInt);
+            input_city = in.next().toString();
+            c.add(input_city);
+            numOfCity+=1;
+        } while(!input_city.equalsIgnoreCase("###"));
+        Distance d = new Distance(numOfCity);
+        for(int i=0;i<numOfCity;i++){
+            for(int j=0;j<numOfCity;j++){
+                input_distance = in.nextInt();
+                d.addDistance(i, j, input_distance);
             }
         }
-        String city1 = in.next();
-        String city2 = in.next();
-        arrayList.indexOf(city1);
-        arrayList.indexOf(city2);
+        String test1 = in.next();
+        String test2 = in.next();
+        int index1 = c.geIndex(test1);
+        int index2 = c.geIndex(test2);
+        int result = d.getDistance(index1, index2);
+        if(test1 == test2) {
+            result = 0;
+        }
+        System.out.println(result);
     }
 
 }
 
 class City {
-    int city_number = 0;
-    private ArrayList<String> city = new ArraryList<String>();
+    private ArrayList<String> citylist = new ArrayList<String>();
 
-    public void add(String c) {
-        this.city.add(c);
+    public void add(String city_name) {
+        this.citylist.add(city_name);
     }
 
-    public int getIndex(String city) {
-        int index;
-        for (String i:this.city) {
-            if ( this.city[i] == city) {
-
-            }
-        }
+    public int geIndex(String city_name) {
+        int index = 0;
+        index = this.citylist.indexOf(city_name);
         return index;
     }
 }
 
 class Distance {
-    private ArrayList<Int> distance = new ArrayList<Int>();
+    private int[][] distance;
 
-    public int getDistance() {
+    public Distance(int num) {
+        int[][] dis = new int[num][num];
+        this.distance =dis;
+    }
 
+    public void addDistance(int hang, int lie, int distance) {
+        this.distance[hang][lie] = distance;
+    }
+
+    public int getDistance(int hang, int lie) {
+        int distance=0;
+        distance = this.distance[hang][lie];
+        return distance;
     }
 }
